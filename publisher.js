@@ -22,7 +22,7 @@ let msg ;
 app.use(bodyParser.json());
 
 
-app.get('/', (req,res) => res.send('Hello from homepage'))
+app.get('/add', (req,res) => res.send('Hello from homepage'))
 
 app.post('/', (req,res) =>{
     try{
