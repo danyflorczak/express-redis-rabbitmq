@@ -12,7 +12,7 @@ async function connect(){
         const channel = await connection.createChannel();
         const result = await channel.assertQueue("jobs");
         channel.sendToQueue("jobs", Buffer.from(msg));
-        console.log(`Job sent sucessfully ${msg}`)
+        console.log(`Job sent sucessfully ${msg}`);
     }
     catch (ex){
         console.log(ex);
