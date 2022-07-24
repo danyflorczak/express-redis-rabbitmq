@@ -1,5 +1,10 @@
-import amqp from 'amqplib';
+const express = require('express');
+const Redis = require('redis');
+const amqp =require('amqplib');
 
+const app = express();
+const redisClient = Redis.createClient();
+const DEFAULT_EXPIRATION = 60;
 connect();
 async function connect() {
 
@@ -11,6 +16,7 @@ async function connect() {
         
         channel.consume("jobs", message => {
             const input = JSON.parse(message.content.toString());
+            redisClient.set('usrInput', DEFAULT_EXPIRATION, JSON.stringify(input));
             console.log(`Recieved job with input ${JSON.stringify(input)}`);
         })
 
@@ -22,3 +28,4 @@ async function connect() {
     }
 
 }
+app.listen(4000);
