@@ -35,4 +35,4 @@ app.post('/add', (req,res) =>{
 });
 
 
-app.listen(process.env.PUBLISHER_PORT);
+app.listen(process.env.PUBLISHER_PORT,() => console.log("Server running"));

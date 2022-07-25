@@ -4,7 +4,12 @@ const Redis = require('redis');
 const amqp =require('amqplib');
 
 const app = express();
-const redisClient = Redis.createClient();
+const redisClient = Redis.createClient({
+    socket: {
+        host: `${process.env.HOST}`,
+        port: process.env.REDIS_PORT
+    }
+});
 redisClient.connect();
 const DEFAULT_EXPIRATION = 60;
 
@@ -31,4 +36,4 @@ async function connect() {
     }
 
 }
-app.listen(process.env.CONSUMER_PORT);
+app.listen(process.env.CONSUMER_PORT,() => console.log("Server running"));
