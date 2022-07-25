@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const Redis = require('redis');
 const amqp =require('amqplib');
@@ -11,7 +12,7 @@ connect();
 async function connect() {
 
     try {
-        const amqpServer = "amqp://localhost:5672";
+        const amqpServer = `amqp://${process.env.RABBITMQ_PORT}`;
         const connection = await amqp.connect(amqpServer);
         const channel = await connection.createChannel();
         await channel.assertQueue("jobs");
@@ -30,4 +31,4 @@ async function connect() {
     }
 
 }
-app.listen(4000);
+app.listen(process.env.CONSUMER_PORT);

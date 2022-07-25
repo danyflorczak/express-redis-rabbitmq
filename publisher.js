@@ -1,13 +1,13 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const amqp= require('amqplib');
 
 const app = express();
-const PORT = 5000;
 
 async function connect(){
     try{
-        const connection = await amqp.connect("amqp://localhost:5672");
+        const connection = await amqp.connect(`amqp://${process.env.RABBITMQ_PORT}`);
         const channel = await connection.createChannel();
         const result = await channel.assertQueue("jobs");
         channel.sendToQueue("jobs", Buffer.from(msg));
@@ -35,4 +35,4 @@ app.post('/add', (req,res) =>{
 });
 
 
-app.listen(PORT, () => console.log(`Server running on port: http://localhost:${PORT}`))
+app.listen(process.env.PUBLISHER_PORT);
