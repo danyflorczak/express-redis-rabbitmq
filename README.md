@@ -15,7 +15,7 @@ $ node consumer.js
 ```
 
 ## Third App explorer.js
-List back size of database</br>
+Show size of database</br>
 ```
 # To run use:
 $ node explorer.js
