@@ -1,21 +1,21 @@
 ## First App publisher.js 
-Listen for Post request on /add ( Json Format ) </br>
-Than send it to rabbitmq queue</br>
+1. Listen for Post request on /add ( Json Format ) </br>
+2. Than send it to rabbitmq queue</br>
 ```
 # To run use:
 $ node publisher.js
 ```
 
 ## Second App consumer.js
-Consumes data from rabbitmq queue </br>
-Than saving it to Redis.</br>
+1. Consumes data from rabbitmq queue </br>
+2. Than save it to Redis.</br>
 ```
 # To run use:
 $ node consumer.js
 ```
 
 ## Third App explorer.js
-Show size of database</br>
+1. Show size of database</br>
 ```
 # To run use:
 $ node explorer.js
