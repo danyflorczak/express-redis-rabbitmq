@@ -4,7 +4,7 @@ Listen for Post request on /add ( Json Format ) </br>
 Than send it to rabbitmq queue</br>
 To run use:</br>
 ```
-  node publisher.js
+node publisher.js
 ```
 
 # Second App consumer.js
@@ -12,7 +12,7 @@ Consumes data from rabbitmq queue </br>
 Than saving it to Redis.</br>
 To run use:</br>
 ```
-  node consumer.js
+node consumer.js
 ```
 
 # Third App explorer.js
